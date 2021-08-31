@@ -1,0 +1,43 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/*
+
+phone = * < 600px
+tab-port = 600px < * < 900px
+tab-land = 900px < * < 1200px 
+default = 1200px < * < 1800px
+big-desktop = 1800px < *
+
+*/
+
+@mixin respond($breackpoint) {
+  @if $breackpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $breackpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breackpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breackpoint == big-desktop {
+    @media only screen and (min-width: 112em) {
+      @content;
+    }
+  }
+}
